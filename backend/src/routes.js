@@ -1,8 +1,30 @@
-const { Router } = require('express');
+const express = require('express')
+
+const auth = require('./configs/auth');
 const indexController = require('./controllers/IndexController');
+const RegisterController = require('./controllers/RegisterController')
+const LoginController = require('./controllers/LoginController')
 
-const routes = Router();
+module.exports = function (server) {
+    // index, show, store, update, destroy
 
-routes.get('/index', indexController.index);
+    /* Rotas protegidas por Token JWT */
+    const protectedApi = express.Router();
+    server.use('/api', protectedApi);
+    protectedApi.use(auth);
 
-module.exports = routes;
+
+    /* Rotas abertas */
+    const openApi = express.Router();
+    server.use('/oapi', openApi);
+    const AuthService = require('./auth/authService');
+
+    // openApi.post('/login', AuthService.login)
+    // openApi.post('/signup', AuthService.signup)
+    // openApi.post('/validateToken', AuthService.validateToken)
+
+    openApi.get('/index', indexController.index);
+
+    openApi.put('/register', RegisterController.store);
+    openApi.post('/login', LoginController.index);
+}
