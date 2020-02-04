@@ -5,6 +5,9 @@ const indexController = require('./controllers/IndexController');
 const RegisterController = require('./controllers/RegisterController')
 const LoginController = require('./controllers/LoginController')
 
+const authService = require('./auth/authService');
+
+
 module.exports = function (server) {
     // index, show, store, update, destroy
 
@@ -25,6 +28,8 @@ module.exports = function (server) {
 
     openApi.get('/index', indexController.index);
 
-    openApi.put('/register', RegisterController.store);
+    openApi.put('/signup', RegisterController.store);
     openApi.post('/login', LoginController.index);
+
+    openApi.post('/validateToken', authService.validateToken);
 }
