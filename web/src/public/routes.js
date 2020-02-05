@@ -7,36 +7,33 @@ import {
   Link,
 } from "react-router-dom";
 
-import { Nav, Navbar, NavItem } from "react-bootstrap";
 import ReduxToastr from 'react-redux-toastr'
 
 import Store from './store';
 
-import Register from './pages/register/register';
+import Register from './pages/register';
+import Login from './pages/login';
 import LandingPage from './pages/landing-page/landing-page';
 
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css'
 
+import NavbarComp from './pages/components/NavbarComp'
+
 export default props => (
-  <Provider store={Store}>
+  //<Provider store={Store}>
 
     <Router>
+      <NavbarComp />
 
-      <Navbar bg="light" expand="lg">
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link href="/home">Home</Nav.Link>
-            <Nav.Link href="/register">Register</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
 
       <br />
 
       <Switch>
         <Route path="/register">
           <Register />
+        </Route>
+        <Route path="/login">
+          <Login />
         </Route>
         <Route path="/">
           <LandingPage />
@@ -53,5 +50,5 @@ export default props => (
         progressBar
         closeOnToastrClick />
     </Router>
-  </Provider>
+  //</Provider>
 )

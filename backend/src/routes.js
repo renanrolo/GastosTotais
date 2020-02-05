@@ -28,7 +28,7 @@ module.exports = function (server) {
 
     openApi.get('/index', indexController.index);
 
-    openApi.put('/signup', RegisterController.store);
+    openApi.post('/signup', RegisterController.store);
     openApi.post('/login', LoginController.index);
 
     openApi.post('/validateToken', authService.validateToken);

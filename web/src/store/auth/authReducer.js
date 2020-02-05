@@ -7,8 +7,6 @@ const INITIAL_STATE = {
 
 export default function reduceContador(state = INITIAL_STATE, action) {
 
-    console.log("action", action)
-
     switch (action.type) {
         case 'TOKEN_VALIDATED':
             if (action.payload) {

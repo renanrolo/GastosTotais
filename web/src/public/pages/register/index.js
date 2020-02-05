@@ -7,13 +7,7 @@ import {
     Form
 } from 'react-bootstrap';
 
-import api from '../../services/api'
-import * as AuthActions from '../../store/auth/authActions';
-
-
-import axios from 'axios'
-import consts from '../../consts'
-import { toastr } from 'react-redux-toastr'
+import * as AuthActions from '../../../store/auth/authActions';
 
 
 function RegisterPage({ user, signup, dispatch }) {
@@ -24,7 +18,7 @@ function RegisterPage({ user, signup, dispatch }) {
     const [password, setpassword] = useState("")
     const [confirmPassword, setconfirmPassword] = useState("")
 
-    function cadastrarUsuario(e) {
+    function btnSubmit(e) {
         e.preventDefault();
 
         signup({
@@ -37,7 +31,7 @@ function RegisterPage({ user, signup, dispatch }) {
 
     return (
         <Container>
-            <Form onSubmit={cadastrarUsuario}>
+            <Form onSubmit={btnSubmit}>
 
                 <Form.Group controlId="formName">
                     <Form.Label>Nome</Form.Label>
