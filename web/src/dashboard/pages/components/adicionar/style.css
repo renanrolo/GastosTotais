@@ -1,0 +1,6 @@
+.btn-flutuante {
+    display: inline-block;
+    position: fixed;
+    right: 80px;
+    bottom: 50px;
+}

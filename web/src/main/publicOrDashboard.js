@@ -19,7 +19,6 @@ class PublicOrDashboard extends Component {
             axios.defaults.headers.common['authorization'] = user.token;
             return <DashboardApp />
         } else if (!user && !validToken) {
-            //return <h1>NÃO ESTÁ LOGADO</h1>
             return <PublicApp />
         } else {
             return false;

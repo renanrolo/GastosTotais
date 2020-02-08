@@ -1,12 +1,14 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
-import promisse from 'redux-promise';
 
 import { reducer as ToastrReducer } from 'react-redux-toastr'
+
 import auth from './auth/authReducer';
+import gastos from './gastos/gastosReducer'
 
 const rootReducer = combineReducers({
     auth,
+    gastos,
     toastr: ToastrReducer
 });
 

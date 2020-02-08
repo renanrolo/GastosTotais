@@ -8,7 +8,7 @@ import {
 
 import ReduxToastr from 'react-redux-toastr'
 
-import LandingPage from './pages/home';
+import DashboardPage from './pages/home';
 
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css'
 
@@ -26,7 +26,7 @@ export default props => (
           <Login />
         </Route> */}
         <Route path="/">
-          <LandingPage />
+          <DashboardPage />
         </Route>
       </Switch>
 

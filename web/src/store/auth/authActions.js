@@ -6,9 +6,11 @@ import consts from '../../consts'
 export function login(values) {
     return submit(values, `${consts.OAPI_URL}/login`)
 }
+
 export function signup(values) {
     return submit(values, `${consts.OAPI_URL}/signup`)
 }
+
 function submit(values, url) {
     return (dispatch) => {
         axios.post(url, values)
@@ -50,8 +52,3 @@ export function validateToken(token) {
         }
     }
 }
-
-
-// export function helloworld() {
-//     return dispatch({ type: "hello", message: "World" })
-// }

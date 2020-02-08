@@ -10,7 +10,7 @@ import ReduxToastr from 'react-redux-toastr'
 
 import Register from './pages/register';
 import Login from './pages/login';
-import LandingPage from './pages/landing-page/landing-page';
+import LandingPage from './pages/home';
 
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css'
 

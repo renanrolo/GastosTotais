@@ -11,7 +11,6 @@ import {
 import * as AuthActions from '../../../store/auth/authActions';
 import { Nav, Navbar, NavItem } from "react-bootstrap";
 
-
 const NavbarComp = ({ auth, logout }) => {
     const history = useHistory();
 

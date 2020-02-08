@@ -6,7 +6,9 @@ function LandingPage() {
     return (
         <Container>
             <Jumbotron>
-                <h1>Olá iMasters!</h1>
+                <h1>Bem vindo ao controle de gastos do Rolo</h1>
+                <h5>Anotações simples de gastos mensais da sua vida pessoa, 
+                    facilitando anotar repetições.</h5>
             </Jumbotron>
         </Container>
     )
