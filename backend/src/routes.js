@@ -2,6 +2,7 @@ const express = require('express')
 
 const auth = require('./configs/auth');
 const indexController = require('./controllers/IndexController');
+const lancamentosController = require('./controllers/LancamentosController');
 
 const authService = require('./auth/authService');
 
@@ -18,7 +19,6 @@ module.exports = function (server) {
     /* Rotas abertas */
     const openApi = express.Router();
     server.use('/oapi', openApi);
-    const AuthService = require('./auth/authService');
 
     // openApi.post('/login', AuthService.login)
     // openApi.post('/signup', AuthService.signup)
@@ -29,4 +29,10 @@ module.exports = function (server) {
     openApi.post('/signup', authService.signup);
     openApi.post('/login', authService.login);
     openApi.post('/validateToken', authService.validateToken);
+
+
+    /* Rotas Autenticadas */
+    protectedApi.get('/lancamentos', lancamentosController.index)
+    protectedApi.post('/lancamentos', lancamentosController.store)
+
 }

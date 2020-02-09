@@ -80,7 +80,7 @@ const Adicionar = ({ adicionarLancamento }) => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                 </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={addLancamento}>
                         Salvar
                 </Button>
                 </Modal.Footer>
