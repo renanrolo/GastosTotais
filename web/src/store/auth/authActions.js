@@ -1,5 +1,6 @@
 import { toastr } from 'react-redux-toastr'
 import axios from 'axios'
+import { useHistory } from "react-router-dom";
 
 import consts from '../../consts'
 
@@ -18,12 +19,13 @@ function submit(values, url) {
                 dispatch(
                     { type: 'USER_FETCHED', payload: resp.data }
                 )
+                
+                const history = useHistory()
+                history.push("/home");
             })
             .catch(e => {
                 if (e.response && e.response.data && e.response.data.errors) {
-                    e.response.data.errors.map((erro) => {
-                        toastr.warning("Erro:", erro)
-                    })
+                    e.response.data.errors.map((erro) => toastr.warning("Erro:", erro))
                 }
                 else {
                     toastr.warning("Indisponível", "")

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Jumbotron, Container } from 'react-bootstrap';
+import { Jumbotron, Container } from 'react-bootstrap';
 
 
 function LandingPage() {

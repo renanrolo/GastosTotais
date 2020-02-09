@@ -11,7 +11,6 @@ import * as AuthActions from '../../../store/auth/authActions';
 
 
 function RegisterPage({ user, signup, dispatch }) {
-    const [msgAviso, setMsgAviso] = useState("")
 
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
@@ -86,10 +85,6 @@ function RegisterPage({ user, signup, dispatch }) {
 
                 <br />
                 <br />
-
-                <div>
-                    {msgAviso}
-                </div>
 
             </Form>
         </Container>

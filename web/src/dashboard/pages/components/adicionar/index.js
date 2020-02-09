@@ -16,7 +16,7 @@ const Adicionar = ({ adicionarLancamento }) => {
     };
     const handleShow = () => setShow(true);
 
-    const [valorLancamento, setValorLancamento] = useState(0);
+    const [valorLancamento, setValorLancamento] = useState('');
     const [dataVencimento, setDataVencimento] = useState('');
     const [switchEntradaSaida, setSwitchEntradaSaida] = useState(false);
 
@@ -25,8 +25,18 @@ const Adicionar = ({ adicionarLancamento }) => {
     }
 
     const clearForm = () => {
-        setValorLancamento(0);
+        setValorLancamento('');
         setDataVencimento('');
+    }
+
+    const addLancamento = () => {
+        const lancamento = {
+            valor: valorLancamento,
+            dataVencimento: dataVencimento,
+            tipo: switchEntradaSaida ? "ENTRADA" : "SAIDA" 
+        }
+
+        adicionarLancamento(lancamento, handleClose)
     }
 
     return (
@@ -43,7 +53,7 @@ const Adicionar = ({ adicionarLancamento }) => {
                             type="number"
                             placeholder="R$ ..."
                             value={valorLancamento}
-                            onChange={setValorLancamento}
+                            onChange={(e) => setValorLancamento(e.target.value)}
                             required />
                     </Form.Group>
 
@@ -52,7 +62,7 @@ const Adicionar = ({ adicionarLancamento }) => {
                         <Form.Control
                             type="date"
                             value={dataVencimento}
-                            onChange={setDataVencimento} />
+                            onChange={(e) => setDataVencimento(e.target.value)} />
                     </Form.Group>
 
                     <Form.Group>

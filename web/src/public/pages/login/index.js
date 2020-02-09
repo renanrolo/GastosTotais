@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { useHistory } from "react-router-dom";
 import {
     Container,
     Button,
@@ -11,8 +10,6 @@ import * as AuthActions from '../../../store/auth/authActions';
 
 
 function LoginPage({ user, login }) {
-
-    const history = useHistory()
 
     const [email, setEmail] = useState("")
     const [password, setpassword] = useState("")
@@ -24,8 +21,6 @@ function LoginPage({ user, login }) {
             email: email,
             password: password,
         });
-
-        history.push("/home");
     }
 
     return (
