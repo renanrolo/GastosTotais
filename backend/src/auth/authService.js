@@ -46,7 +46,7 @@ const signup = (req, res, next) => {
     const confirmPassword = req.body.confirm_password || ''
 
     if (!email.match(emailRegex)) {
-        return res.status(400).send({ errors: ['O e-mail informa está inválido'] })
+        return res.status(400).send({ errors: ['O e-mail informado está inválido'] })
     }
 
     if (!password.match(passwordRegex)) {
@@ -82,4 +82,13 @@ const signup = (req, res, next) => {
     })
 }
 
-module.exports = { login, signup, validateToken }
+const getUserFromToken = (req) => {
+    const token = req.body.token || req.query.token || req.headers['authorization']
+    // Parse the JWT string
+    // Note that we are passing the key in this method as well. This method will throw an error
+    // if the token is invalid (if it has expired according to the expiry time we set on sign in),
+    // or if the signature does not match
+    return jwt.verify(token, env.authSecret)
+}
+
+module.exports = { login, signup, validateToken, getUserFromToken }
