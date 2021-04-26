@@ -1,1 +1,37 @@
-<mxfile host="app.diagrams.net" modified="2021-04-26T20:03:50.967Z" agent="5.0 (Windows)" version="14.6.1" etag="GqybY_OGDtKf9xbRLF_8" type="github"><diagram id="tfJoVGq2Xgr2CKbNlGps">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2021-04-26T20:18:13.668Z" agent="5.0 (Windows)" etag="esU5JBtG4x3wNi5UjYVa" version="14.6.1" type="github">
+  <diagram id="tfJoVGq2Xgr2CKbNlGps" name="Page-1">
+    <mxGraphModel dx="1038" dy="575" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="rRa_O3xhuo06ls6SlTBe-6" value="&lt;div&gt;HTTP/JSON&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="rRa_O3xhuo06ls6SlTBe-1" target="rRa_O3xhuo06ls6SlTBe-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rRa_O3xhuo06ls6SlTBe-7" value="HTTP/JSON" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="rRa_O3xhuo06ls6SlTBe-1" target="rRa_O3xhuo06ls6SlTBe-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rRa_O3xhuo06ls6SlTBe-1" value="APP" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="150" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rRa_O3xhuo06ls6SlTBe-5" value="HTTP/JSON" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="rRa_O3xhuo06ls6SlTBe-2" target="rRa_O3xhuo06ls6SlTBe-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rRa_O3xhuo06ls6SlTBe-2" value="BFF" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rRa_O3xhuo06ls6SlTBe-3" value="Auth&lt;br&gt;[Back]&lt;br&gt;Auth.Api" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="30" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rRa_O3xhuo06ls6SlTBe-9" value="TCP/IP&lt;br&gt;SQL SERVER" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="rRa_O3xhuo06ls6SlTBe-4" target="rRa_O3xhuo06ls6SlTBe-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rRa_O3xhuo06ls6SlTBe-4" value="[Back]&lt;br&gt;Entries.Api" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="510" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rRa_O3xhuo06ls6SlTBe-8" value="DB" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="730" y="140" width="60" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
