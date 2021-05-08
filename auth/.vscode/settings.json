@@ -1,0 +1,9 @@
+{
+    "windowColors.🌈 BaseColor": "#003f20",
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#004d4d",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveBackground": "#004d4d99",
+        "titleBar.inactiveForeground": "#e7e7e799"
+    }
+}

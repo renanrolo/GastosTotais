@@ -1,0 +1,55 @@
+version: '3'
+
+services:
+  database_postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    volumes:
+      - database-data:/var/lib/postgresql/data/ # persist data even if container shuts down
+    networks:
+      - postgres-compose-network
+
+  nodejs-auth-server:
+    build:
+      context: ./auth
+      dockerfile: ./Dockerfile
+    restart: unless-stopped
+    env_file: ./auth/.env
+    environment:
+      - TYPEORM_HOST=database_postgres
+      # - MONGO_USERNAME=$MONGO_USERNAME
+    ports:
+      - "3334:3334"
+    links:
+      - database_postgres
+    container_name: node-auth-api
+    volumes:
+        - ./auth:/usr/src/app/api
+        - node_modules:/usr/src/app/auth/node_modules
+    networks:
+      - postgres-compose-network
+
+volumes:
+  database-data: # named volumes can be managed easier using docker-compose
+  node_modules:
+  auth:
+  # pgadmin-compose:
+  #   image: dpage/pgadmin4
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
+  #     PGADMIN_DEFAULT_PASSWORD: "postgres"
+  #   restart: always
+  #   ports:
+  #     - "16543:80"
+  #   depends_on:
+  #     - postgres-compose
+  #   networks:
+  #     - postgres-compose-network
+
+networks: 
+  postgres-compose-network:
+    driver: bridge
