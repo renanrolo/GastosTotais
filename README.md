@@ -13,14 +13,16 @@ Usar Docker-Composer
 
 ### Auth Api
 
-##### [POST] localhost/api/v1/auth-user
+```[POST] localhost/api/v1/auth-user```
 ```
-[BODY]
+Request
 {
     "email": "{{$randomEmail}}",
     "password": "123"
 }
-[RESPONSE BODY]
+```
+```
+Response
 {
     "UserUuid": "24b92587-c0a5-4d0e-acbe-8635e4c451b1",
     "FullName": "renan@gmail.com",
