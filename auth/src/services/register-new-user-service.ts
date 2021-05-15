@@ -2,10 +2,11 @@ import { v4 as uuidv4 } from 'uuid';
 import User from '../entities/user';
 import AuthUser from '../entities/auth-user';
 import { EmailAlreadyInUse } from '../exceptions/custom-exceptions';
+import { TokenService } from '../services/token-service'
 
 export class RegisterNewUserService {
 
-    static async create(email: string, password: string): Promise<User> {
+    static async create(email: string, password: string): Promise<{ User: User, Token: any }> {
         await this.CheckIfEmailIsAvaible(email);
 
         const dateTimeNow = new Date();
@@ -20,6 +21,7 @@ export class RegisterNewUserService {
         });
 
         await createdUser.save();
+        console.log("createdUser");
 
         const createdAuthUser: AuthUser = AuthUser.create({
             UserUuid: createdUser.UserUuid,
@@ -28,8 +30,14 @@ export class RegisterNewUserService {
         });
 
         await createdAuthUser.save();
+        console.log("createdAuthUser");
 
-        return createdUser;
+        const token = TokenService.CreateToken(createdUser);
+        console.log("createdToken");
+
+        console.log("token", token);
+
+        return { User: createdUser, Token: token };
     }
 
     private static async CheckIfEmailIsAvaible(email: string) {

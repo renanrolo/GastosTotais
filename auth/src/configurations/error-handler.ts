@@ -5,10 +5,11 @@ export default function (app) {
 
   app.use(function (err, req, res, next) {
 
-    console.log(err)
+    console.log("Error Handler", err);
 
     //Get errors from 'express-validation'
     if (err instanceof ValidationError) {
+      console.log("Error is ValidationError");
 
       const errors = err.details.body.map(e => { return { 'message': e.message} })
 
@@ -17,6 +18,7 @@ export default function (app) {
 
     //Using CustomException to customize responses
     if (err.name === 'CustomException') {
+      console.log("Error is CustomException");
       return res.status(err.status).json({
         status: err.status || 500,
         message: err.message,
@@ -25,6 +27,7 @@ export default function (app) {
 
     //Generate generic error message in case of errors
     if (err) {
+      console.log("Error is 'Internal Server Error'");
       return res.status(err.status || 500).send({
         error: {
           status: err.status || 500,
@@ -32,6 +35,7 @@ export default function (app) {
         },
       });
     }
+    console.log("Error is 404");
 
     return res.status(404).send({
       status: 404,

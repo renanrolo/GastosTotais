@@ -15,10 +15,10 @@ router.post('/auth-user', validate(validateCreateUser), async function (req: Req
 
         const { email, password } = req.body;
 
-        const user: User = await RegisterNewUserService.create(email, password);
+        const response = await RegisterNewUserService.create(email, password);
 
         return res.status(200)
-                  .json(user);
+            .json(response);
 
     } catch (err) {
         console.log(err)
