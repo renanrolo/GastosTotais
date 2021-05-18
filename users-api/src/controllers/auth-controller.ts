@@ -1,5 +1,4 @@
 import express, { Request, Response } from 'express';
-import User from '../entities/user';
 import { validate } from 'express-validation';
 import { validateCreateUser } from '../validations/validate-create-user';
 import { RegisterNewUserService } from '../services/register-new-user-service';
@@ -21,7 +20,7 @@ router.post('/auth-user', validate(validateCreateUser), async function (req: Req
             .json(response);
 
     } catch (err) {
-        console.log(err)
+        console.log('auth-user post', err)
         next()
     }
 });

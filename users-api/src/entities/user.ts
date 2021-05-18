@@ -2,6 +2,16 @@ import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity('users')
 export default class User extends BaseEntity {
+  constructor(uuid: string, fullName: string, email: string, creationDate: Date, lastUpdateDate: Date) {
+    super();
+
+    this.UserUuid = uuid;
+    this.FullName = fullName;
+    this.Email = email;
+    this.CreationDate = creationDate;
+    this.LastUpdateDate = lastUpdateDate;
+  }
+
   @PrimaryColumn({ name: 'user_uuid' })
   UserUuid: string;
 

@@ -21,7 +21,8 @@ export class RegisterNewUserService {
         });
 
         await createdUser.save();
-        console.log("createdUser");
+
+        console.log("createdUser", createdUser);
 
         const createdAuthUser: AuthUser = AuthUser.create({
             UserUuid: createdUser.UserUuid,
@@ -30,25 +31,21 @@ export class RegisterNewUserService {
         });
 
         await createdAuthUser.save();
-        console.log("createdAuthUser");
 
         const token = TokenService.CreateToken(createdUser);
-        console.log("createdToken");
-
-        console.log("token", token);
 
         return { User: createdUser, Token: token };
     }
 
     private static async CheckIfEmailIsAvaible(email: string) {
-        const user: User = await this.FindUserByEmail(email);
+        const user = await this.FindUserByEmail(email);
 
         if (user) {
             throw new EmailAlreadyInUse();
         }
     }
 
-    private static async FindUserByEmail(email: string): Promise<User> {
+    private static async FindUserByEmail(email: string): Promise<User | undefined> {
         const query = {
             where: {
                 Email: email

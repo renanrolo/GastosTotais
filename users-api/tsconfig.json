@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "build",
+    "lib": ["es5", "es6"],
+    "target": "es5",
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noImplicitAny": false,
+    "allowJs": true,
+    "removeComments": true,
+    "types": ["@types/jsonwebtoken","jsonwebtoken"],
+    "typeRoots": ["./node_modules/@types"],
+    "paths": {
+      "jsonwebtoken": ["./node_modules/jsonwebtoken"]
+    }
+
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}

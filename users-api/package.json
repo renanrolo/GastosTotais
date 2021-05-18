@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "devDependencies": {
+    "@tsconfig/node14": "^1.0.0",
     "@types/express": "^4.17.9",
     "@types/node": "^8.0.29",
     "nodemon": "^2.0.6",
@@ -10,19 +11,28 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
+    "@types/jsonwebtoken": "^8.5.1",
     "axios": "^0.21.1",
     "bcrypt": "^5.0.1",
     "express": "^4.17.1",
     "express-validation": "^3.0.8",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^8.0.0",
     "pg": "^8.4.0",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.32",
     "uuid": "^8.3.2"
   },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
   "scripts": {
     "start:dev": "nodemon",
     "build": "tsc",
-    "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js"
+    "tsc": "tsc",
+    "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
+    "migrate": "typeorm migration:run"
   }
 }

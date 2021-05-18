@@ -11,7 +11,7 @@ export default function (app) {
     if (err instanceof ValidationError) {
       console.log("Error is ValidationError");
 
-      const errors = err.details.body.map(e => { return { 'message': e.message} })
+      const errors = err.details.body?.map(e => { return { 'message': e.message} });
 
       return res.status(err.statusCode).json({errors})
     }

@@ -13,12 +13,12 @@ services:
     networks:
       - postgres-compose-network
 
-  nodejs-auth-server:
+  users_api:
     build:
-      context: ./auth
+      context: ./users-api
       dockerfile: ./Dockerfile
     restart: unless-stopped
-    env_file: ./auth/.env
+    env_file: ./users-api/.env
     environment:
       - TYPEORM_HOST=database_postgres
       # - MONGO_USERNAME=$MONGO_USERNAME
@@ -26,17 +26,17 @@ services:
       - "3334:3334"
     links:
       - database_postgres
-    container_name: node-auth-api
-    volumes:
-        - ./auth:/usr/src/app/api
-        - node_modules:/usr/src/app/auth/node_modules
+    container_name: users_api
+#    volumes:
+#        - ./users-api:/usr/src/app/users-api
+#        - node_modules:/usr/src/app/users-api/node_modules
     networks:
       - postgres-compose-network
 
 volumes:
   database-data: # named volumes can be managed easier using docker-compose
-  node_modules:
-  auth:
+  #users-api:
+  #node_modules:
   # pgadmin-compose:
   #   image: dpage/pgadmin4
   #   environment:
