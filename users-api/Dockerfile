@@ -1,25 +1,13 @@
 FROM node:14
 
-
+# Copy everything to root folder
 COPY . .
+
+# Install all node dependencies
 RUN npm i
 
-
-
-#WORKDIR /usr/src/app/users-api
-# COPY package.json tsconfig.json ormconfig.json ./
-# COPY src/ src/
-# RUN npm i
-#RUN npm run build
-
+# start application
 CMD ["npm", "run", "start:dev"]
 
+# It's good to informe the port the application will
 EXPOSE 3334
-
-# FROM node:14
-# WORKDIR /usr/src/app/users-api
-# COPY package.json tsconfig.json ormconfig.json ./
-# RUN npm install
-# COPY . /usr/src/app/users-api
-# CMD ["npm", "run", "start:dev"]
-# EXPOSE 3334

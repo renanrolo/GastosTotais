@@ -21,34 +21,16 @@ services:
     env_file: ./users-api/.env
     environment:
       - TYPEORM_HOST=database_postgres
-      # - MONGO_USERNAME=$MONGO_USERNAME
     ports:
       - "3334:3334"
     links:
       - database_postgres
     container_name: users_api
-#    volumes:
-#        - ./users-api:/usr/src/app/users-api
-#        - node_modules:/usr/src/app/users-api/node_modules
     networks:
       - postgres-compose-network
 
 volumes:
   database-data: # named volumes can be managed easier using docker-compose
-  #users-api:
-  #node_modules:
-  # pgadmin-compose:
-  #   image: dpage/pgadmin4
-  #   environment:
-  #     PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
-  #     PGADMIN_DEFAULT_PASSWORD: "postgres"
-  #   restart: always
-  #   ports:
-  #     - "16543:80"
-  #   depends_on:
-  #     - postgres-compose
-  #   networks:
-  #     - postgres-compose-network
 
 networks: 
   postgres-compose-network:
