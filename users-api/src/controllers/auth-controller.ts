@@ -11,17 +11,15 @@ router.get('/auth-user', function (req, res, next) {
 
 router.post('/auth-user', validate(validateCreateUser), async function (req: Request, res: Response, next) {
     try {
-
         const { email, password } = req.body;
 
         const response = await RegisterNewUserService.create(email, password);
 
         return res.status(200)
-            .json(response);
-
+                  .json(response);
     } catch (err) {
         console.log('auth-user post', err)
-        next()
+        next();
     }
 });
 

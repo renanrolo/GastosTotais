@@ -17,6 +17,8 @@ services:
     build:
       context: ./users-api
       dockerfile: ./Dockerfile
+    volumes:
+      - ./users-api:/users-api
     restart: unless-stopped
     env_file: ./users-api/.env
     environment:
