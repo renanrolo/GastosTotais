@@ -5,8 +5,6 @@ export default function (app) {
 
   app.use(function (err, req, res, next) {
 
-    console.log("Error Handler", err);
-
     //Get errors from 'express-validation'
     if (err instanceof ValidationError) {
       console.log("Error is ValidationError");
@@ -17,17 +15,17 @@ export default function (app) {
     }
 
     //Using CustomException to customize responses
-    if (err.name === 'CustomException') {
+    if (err instanceof CustomException) {
       console.log("Error is CustomException");
       return res.status(err.status).json({
-        status: err.status || 500,
+        status: err.status || 400,
         message: err.message,
       })
     }
 
     //Generate generic error message in case of errors
     if (err) {
-      console.log("Error is 'Internal Server Error'");
+      console.log("🚀 error-handler ~ err", err)
       return res.status(err.status || 500).send({
         error: {
           status: err.status || 500,

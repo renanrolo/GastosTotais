@@ -1,28 +1,27 @@
 import { v4 as uuidv4 } from 'uuid';
-import User from '../entities/user';
-import AuthUser from '../entities/auth-user';
-import { EmailAlreadyInUse } from '../exceptions/custom-exceptions';
 import { TokenService } from '../services/token-service'
+import { EmailAlreadyInUse } from '../exceptions/custom-exceptions';
+import AuthUser from '../entities/auth-user';
+import Users from '../entities/users';
 
 export class RegisterNewUserService {
 
-    static async create(email: string, password: string): Promise<{ User: User, Token: any }> {
+    static async create(email: string, password: string): Promise<{ User: Users, Token: any }> {
         await this.CheckIfEmailIsAvaible(email);
 
         const dateTimeNow = new Date();
 
-        const createdUser: User = User.create({
+        const createdUser: Users = Users.create({
             UserUuid: uuidv4(),
             FullName: email,
             Email: email,
             CreationDate: dateTimeNow,
             LastUpdateDate: dateTimeNow,
-
         });
 
         await createdUser.save();
 
-        console.log("createdUser", createdUser);
+        console.log("New user created:", createdUser);
 
         const createdAuthUser: AuthUser = AuthUser.create({
             UserUuid: createdUser.UserUuid,
@@ -45,13 +44,13 @@ export class RegisterNewUserService {
         }
     }
 
-    private static async FindUserByEmail(email: string): Promise<User | undefined> {
+    private static async FindUserByEmail(email: string): Promise<Users | undefined> {
         const query = {
             where: {
                 Email: email
             }
         }
 
-        return await User.findOne(query);
+        return await Users.findOne(query);
     }
 }

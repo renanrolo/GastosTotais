@@ -1,13 +1,11 @@
 import express, { Request, Response } from 'express';
 import { createConnection } from 'typeorm';
 import ErrorHandler from './configurations/error-handler'
-import path from 'path';
-// import jsonwebtoken from 'jsonwebtoken';
-// import fs from 'fs';
 
 //controllers
 import AuthController from './controllers/auth-controller';
 import UsersController from './controllers/users-controller';
+import LoginController from './controllers/login-controller';
 
 const PORT = process.env.PORT || 3334;
 
@@ -17,25 +15,11 @@ app.use(express.json());
 
 app.use('/api/v1', AuthController);
 app.use('/api/v1', UsersController);
-
-const directoryPath = path.join(__dirname, 'controllers');
-
-// fs.readdir(directoryPath, function (err, files) {
-//     if (err) {
-//         console.log('Unable to scan directory: ' + err);
-//         throw err;
-//     } 
-    
-//     files.forEach(function (file) {
-
-//       console.log(file);
-//     });
-// });
+app.use('/api/v1', LoginController);
 
 app.get('/healthcheck', async (req: Request, res: Response) => {
   res.status(200).json('Health');
 });
-
 
 ErrorHandler(app);
 

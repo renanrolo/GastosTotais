@@ -1,9 +1,9 @@
 import jwt from 'jsonwebtoken';
-import User from '../entities/user';
+import Users from '../entities/users';
 
 export class TokenService {
 
-    public static CreateToken(user: User): any {
+    public static CreateToken(user: Users): string {
 
         console.log("auth secret is", process.env.AUTH_SECRET)
 
@@ -11,6 +11,9 @@ export class TokenService {
             throw new Error("Secret cannot be empty");
         }
 
-        return jwt.sign({ email: user.Email }, process.env.AUTH_SECRET, { expiresIn: "2 days" });
+        const token = jwt.sign({ email: user.Email }, process.env.AUTH_SECRET, { expiresIn: "2 days" });
+        console.log("🚀 ~ TokenService ~ CreateToken ~ token", token)
+
+        return token;
     }
 }
