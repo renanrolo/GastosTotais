@@ -5,9 +5,10 @@ import AuthUser from '../entities/auth-user';
 import Users from '../entities/users';
 import UsersInvite from '../entities/users-invite';
 import { getRepository } from 'typeorm';
+import { UserToken } from '../models/user-token';
 
 export class LoginService {
-    static async Authenticate(email: string, password: string): Promise<UnauthenticatedUser | UsersInvite | string> {
+    static async Authenticate(email: string, password: string): Promise<UnauthenticatedUser | UsersInvite | UserToken> {
 
         const user = await this.FindUserByEmail(email);
 
