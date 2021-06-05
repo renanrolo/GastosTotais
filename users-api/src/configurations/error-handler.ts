@@ -4,6 +4,7 @@ import { CustomException } from '../exceptions/custom-exceptions';
 export default function (app) {
 
   app.use(function (err, req, res, next) {
+  console.log("🚀 > file: error-handler.ts > line 7 > err", err);
 
     //Get errors from 'express-validation'
     if (err instanceof ValidationError) {
@@ -15,8 +16,8 @@ export default function (app) {
     }
 
     //Using CustomException to customize responses
-    if (err instanceof CustomException) {
-      console.log("Error is CustomException");
+    if (err.status && err.message) {
+      console.log("Error is CustomException", err);
       return res.status(err.status).json({
         status: err.status || 400,
         message: err.message,

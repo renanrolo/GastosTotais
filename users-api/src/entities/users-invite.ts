@@ -2,7 +2,7 @@ import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity('users_invite')
 export default class UsersInvite extends BaseEntity {
-  constructor(uuid: string, email: string, inviteDate: Date, accepted: Date) {
+  constructor(uuid: string, email: string, inviteDate: Date, accepted: boolean) {
     super();
 
     this.UserInviteUuid = uuid;
@@ -21,5 +21,5 @@ export default class UsersInvite extends BaseEntity {
   InviteDate: Date;
 
   @Column({ name: 'accepted' })
-  Accepted: Date;
+  Accepted: boolean;
 }

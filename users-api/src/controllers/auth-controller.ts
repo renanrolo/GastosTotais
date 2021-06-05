@@ -15,11 +15,9 @@ router.post('/auth-user', validate(validateCreateUser), async function (req: Req
 
         const response = await RegisterNewUserService.create(email, password);
 
-        return res.status(200)
-                  .json(response);
+        return res.status(200).json(response);
     } catch (err) {
-        console.log('auth-user post', err)
-        next();
+        next(err);
     }
 });
 

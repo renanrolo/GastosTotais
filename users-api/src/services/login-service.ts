@@ -4,7 +4,6 @@ import { InviteService } from '../services/invite-service';
 import AuthUser from '../entities/auth-user';
 import Users from '../entities/users';
 import UsersInvite from '../entities/users-invite';
-import { getRepository } from 'typeorm';
 import { UserToken } from '../models/user-token';
 
 export class LoginService {
