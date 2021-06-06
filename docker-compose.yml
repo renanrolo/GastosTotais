@@ -31,6 +31,40 @@ services:
     container_name: users_api
     networks:
       - postgres-compose-network
+    depends_on: 
+      - database_postgres
+
+  # Ainda não consegui fazer funcionar...
+  # users_api_migration:
+  #   build:
+  #     context: ./users-api
+  #   networks:
+  #     - postgres-compose-network
+  #   links:
+  #     - database_postgres
+  #   command: npm run migrate
+  #   depends_on:
+  #     - database_postgres
+
+  core_api:
+    build:
+      context: ./core-api
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./core-api:/core-api
+    restart: unless-stopped
+    env_file: ./core-api/.env
+    environment:
+      - TYPEORM_HOST=database_postgres
+    ports:
+      - "3335:3335"
+    links:
+      - database_postgres
+    container_name: core_api
+    networks:
+      - postgres-compose-network
+    depends_on: 
+      - database_postgres
 
 volumes:
   database-data: # named volumes can be managed easier using docker-compose

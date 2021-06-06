@@ -1,0 +1,19 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "postgres",
+  "password": "postgres",
+  "database": "gastostotais",
+  "synchronize": false,
+  "logging": false,
+  "entities": ["./src/entities/**/*.ts"],
+  "migrations": ["./src/migrations/**/*.ts"],
+  "subscribers": ["./src/subscriber/**/*.ts"],
+  "migrationsTableName": "migrations_tbl",
+  "cli": {
+    "entitiesDir": "src/entities",
+    "migrationsDir": "src/migration",
+    "subscribersDir": "src/subscriber"
+  }
+}
