@@ -16,9 +16,7 @@
     "removeComments": true,
     "types": ["@types/jsonwebtoken","jsonwebtoken"],
     "typeRoots": ["./node_modules/@types"],
-    "paths": {
-      "jsonwebtoken": ["./node_modules/jsonwebtoken"]
-    }
+  
 
   },
   "include": ["src/**/*"],
